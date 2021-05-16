@@ -24,7 +24,6 @@ public class EmployeeController {
     public String viewHomePage(Model model) {
         List<Employee> employees = employeeService.findAllEmployees();
         model.addAttribute("listEmployees",employees);
-        //employees.stream().forEach(System.out::println);
         return "home";
     }
 
@@ -32,7 +31,7 @@ public class EmployeeController {
     public String newEmployeePage(Model model) {
         Employee employee = new Employee();
         model.addAttribute(employee);
-        return "new_employee";
+        return "add";
     }
 
     @RequestMapping(value="/save", method=RequestMethod.POST)
@@ -40,14 +39,14 @@ public class EmployeeController {
         employeeService.saveEmployee(employee);
         return "redirect:/";
     }
-    @RequestMapping("edit/{sid}")
+    @RequestMapping("edit/{id}")
     public ModelAndView showEditEmployeePage(@PathVariable (name="id") Long id) {
-        ModelAndView modelAndView = new ModelAndView("edit_employee");
+        ModelAndView modelAndView = new ModelAndView("edit");
         Employee employee = employeeService.findEmployeeById(id);
         modelAndView.addObject("employee", employee);
         return modelAndView;
     }
-    @RequestMapping("delete/{sid}")
+    @RequestMapping("delete/{id}")
     public String deleteEmployeePage(@PathVariable (name="id") Long id) {
         employeeService.deleteEmployee(id);
         return "redirect:/";

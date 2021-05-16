@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>EditingEmployee</title>
+</head>
+<body>
+<div align="center">
+    <h1>Edit Profile Employee</h1>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${employee}"
+          method="post">
+        <table border="0">
+            <tr>
+                <td>Employee ID:</td>
+                <td><input type="text" th:field="*{id}" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>FirstName : </td>
+                <td><input type="text" th:field="*{firstName}" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>LastName : </td>
+                <td><input type="text" th:field="*{lastName}" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>Job Position : </td>
+                <td><input type="text" th:field="*{jobPosition}" /></td>
+            </tr>
+            <tr>
+                <td>Email : </td>
+                <td><input type="text" th:field="*{email}" /></td>
+            </tr>
+            <tr>
+                <td>Phone : </td>
+                <td><input type="text" th:field="*{phone}" /></td>
+            </tr>
+            <tr>
+                <td>Town : </td>
+                <td><input type="text" th:field="*{town}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
