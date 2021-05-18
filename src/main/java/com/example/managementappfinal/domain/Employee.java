@@ -4,24 +4,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name = "employees")
 public class Employee implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
     private String firstName;
     private String lastName;
-    private String jobPosition;
     private String email;
     private String phone;
     private String town;
 
-    public Employee(Long id, String firstName, String lastName, String jobPosition, String email, String phone, String town) {
+    public Employee(Long id, String firstName, String lastName, String email, String phone, String town) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.jobPosition = jobPosition;
         this.email = email;
         this.phone = phone;
         this.town = town;
@@ -55,15 +53,6 @@ public class Employee implements Serializable {
 
     public Employee setLastName(String lastName) {
         this.lastName = lastName;
-        return this;
-    }
-
-    public String getJobPosition() {
-        return jobPosition;
-    }
-
-    public Employee setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
         return this;
     }
 
