@@ -14,17 +14,16 @@ public class User implements Serializable {
     private Long id;
     private String username;
     private String password;
-    private boolean status;
-
+    private boolean enabled;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "users_functions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "function_id"))
     private Set<Function> functions = new HashSet<>();
 
-    public User(Long id, String username, String password, boolean status) {
+    public User(Long id, String username, String password, boolean enabled) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.status = status;
+        this.enabled = enabled;
     }
 
     public User() {
@@ -58,12 +57,21 @@ public class User implements Serializable {
         return this;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public User setStatus(boolean status) {
-        this.status = status;
+    public User setEnabled(boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    public Set<Function> getFunctions() {
+        return functions;
+    }
+
+    public User setFunctions(Set<Function> functions) {
+        this.functions = functions;
         return this;
     }
 }
