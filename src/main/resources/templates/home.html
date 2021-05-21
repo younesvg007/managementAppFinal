@@ -50,7 +50,7 @@
                     <div sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
                         <a class="btn btn-outline-primary" th:href="@{'/edit/' + ${employee.id}}">Edit</a>
                     </div> &nbsp;&nbsp;&nbsp;
-                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <div sec:authorize="hasAuthority('ADMIN')">
                         <a class="btn btn-outline-danger" th:href="@{'/delete/' + ${employee.id}}">Delete</a>
                     </div>
                 </td>
@@ -58,11 +58,10 @@
             </tbody>
         </table>
     </div>
-
+    <br>
     <div>
         <form th:action="@{/logout}" method="post">
-            <!-- <input type="submit" value="Logout" /> -->
-            <button type="submit" class="btn btn-danger">Logout</button>
+            <button type="submit" class="btn btn-danger">Log Out</button>
         </form>
     </div>
 </div>

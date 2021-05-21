@@ -23,7 +23,7 @@ public class EmployeeController {
     @RequestMapping("/")
     public String viewHomePage(Model model) {
         List<Employee> employees = employeeService.findAllEmployees();
-        model.addAttribute("listEmployees",employees);
+        model.addAttribute("listEmployees", employees);
         return "home";
     }
 
@@ -34,20 +34,22 @@ public class EmployeeController {
         return "add";
     }
 
-    @RequestMapping(value="/save", method=RequestMethod.POST)
-    public String saveEmployee(@ModelAttribute ("employee") Employee employee) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         employeeService.saveEmployee(employee);
         return "redirect:/";
     }
+
     @RequestMapping("edit/{id}")
-    public ModelAndView showEditEmployeePage(@PathVariable (name="id") Long id) {
+    public ModelAndView showEditEmployeePage(@PathVariable("id") Long id) {
         ModelAndView modelAndView = new ModelAndView("edit");
         Employee employee = employeeService.findEmployeeById(id);
         modelAndView.addObject("employee", employee);
         return modelAndView;
     }
+
     @RequestMapping("delete/{id}")
-    public String deleteEmployeePage(@PathVariable (name="id") Long id) {
+    public String deleteEmployeePage(@PathVariable("id") Long id) {
         employeeService.deleteEmployee(id);
         return "redirect:/";
     }
