@@ -15,7 +15,7 @@ public class User implements Serializable {
     private boolean enabled;
     @ManyToOne()
     @JoinColumn(name = "function_id")
-    private Function function = new Function();
+    private Function function;
     //@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     //@JoinTable(name = "users_functions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "function_id"))
     //private Set<Function> functions = new HashSet<>();
