@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Function implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false, name = "function_id")
+    @Column(nullable = false, name = "function_id")
     private Integer id;
     private String name;
 
@@ -38,4 +38,5 @@ public class Function implements Serializable {
         this.name = name;
         return this;
     }
+
 }

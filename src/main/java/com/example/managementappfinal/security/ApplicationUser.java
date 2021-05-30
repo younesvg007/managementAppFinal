@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public class ApplicationUser implements UserDetails {
 
@@ -21,10 +20,13 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Function> functions = user.getFunctions();
+        /*Set<Function> functions = user.getFunctions();
         List<SimpleGrantedAuthority> grantedAuthorityList = new ArrayList<>();
-        functions.forEach(e -> grantedAuthorityList.add(new SimpleGrantedAuthority(e.getName())));
+        functions.forEach(e -> grantedAuthorityList.add(new SimpleGrantedAuthority(e.getName())));*/
 
+        Function function = user.getFunction();
+        List<SimpleGrantedAuthority> grantedAuthorityList = new ArrayList<>();
+        grantedAuthorityList.add(new SimpleGrantedAuthority(function.getName()));
         return grantedAuthorityList;
     }
 
