@@ -20,9 +20,6 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        /*Set<Function> functions = user.getFunctions();
-        List<SimpleGrantedAuthority> grantedAuthorityList = new ArrayList<>();
-        functions.forEach(e -> grantedAuthorityList.add(new SimpleGrantedAuthority(e.getName())));*/
 
         Function function = user.getFunction();
         List<SimpleGrantedAuthority> grantedAuthorityList = new ArrayList<>();

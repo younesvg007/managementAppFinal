@@ -16,9 +16,6 @@ public class User implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "function_id")
     private Function function;
-    //@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //@JoinTable(name = "users_functions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "function_id"))
-    //private Set<Function> functions = new HashSet<>();
 
     public User(Long id, String username, String password, boolean enabled) {
         this.id = id;
@@ -66,15 +63,6 @@ public class User implements Serializable {
         this.enabled = enabled;
         return this;
     }
-
-   /* public Set<Function> getFunctions() {
-        return functions;
-    }
-
-    public User setFunctions(Set<Function> functions) {
-        this.functions = functions;
-        return this;
-    }*/
 
     public Function getFunction() {
         return function;
